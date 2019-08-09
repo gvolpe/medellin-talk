@@ -4,14 +4,14 @@ module THDD where
 
 -- val foo: List[List[Int]] -> List[Int]
 foo :: [[Int]] -> [Int]
-foo = undefined
+foo = mconcat
 
 -- val bar: Int -> Int -> List[Int]
-bar :: Int -> Int -> [Int]
-bar = undefined
+medellin :: Int -> Int -> [Int]
+medellin = replicate
 
 -- def fzip[F[_]: Applicative, A, B](fa: F[A], fb: F[B]): F[(A, B)]
-fzip :: Applicative f => f a -> f b -> f (a, b)
+fzip :: Applicative f => (a -> b) -> f a -> f b -> f (a, b)
 fzip = undefined
 
 -- def funzip[F[_]: Applicative, A, B](fab: F[(A, B)]): (F[A], F[B])
@@ -23,7 +23,8 @@ taz = undefined
 
 -- def headOr[A](a: A, as: List[A]): A
 headOr' :: a -> [a] -> a
-headOr' = undefined
+headOr' x [] = x
+headOr' _ (x:_) = x
 
 --tap :: forall m a b . Monad m => m a -> (a -> m b) -> m a
 --tap ma f = ma >>= f >> ma
